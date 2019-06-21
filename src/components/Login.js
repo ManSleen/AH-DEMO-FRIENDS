@@ -7,11 +7,13 @@ import { login } from "./actions/actions";
 
 class Login extends React.Component {
   state = {
-    username: "",
-    password: "",
-    email: ""
+    credentials: {
+      username: "",
+      password: ""
+    }
   };
   render() {
+    console.log(this.props);
     return (
       <div className="login-wrapper">
         <Form>
@@ -71,8 +73,9 @@ class Login extends React.Component {
     });
   };
 
-  login = () => {
-    // How do we login?!
+  login = e => {
+    e.preventDefault();
+    this.props.login(this.state.credentials);
   };
 }
 
